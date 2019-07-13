@@ -1,5 +1,5 @@
-function createTodo(name) {
-  return { name: name, completed: false };
+function createTodo(name, id) {
+  return { name: name, id: id, completed: false };
 }
 
 let tasks = [
@@ -56,6 +56,11 @@ function getActions(task) {
   }
 }
 
+function addTask(name) {
+  tasks.push(createTodo(name, tasks.length));
+  render(tasks);
+}
+
 function completeItem(event) {
   let taskToComplete = tasks.find(task => task.id == getId(event));
   taskToComplete.completed = true;
@@ -73,9 +78,9 @@ function unCompleteItem(event) {
   render(tasks);
 }
 
-const getId = (event) => {
+const getId = event => {
   return Number(event.target.id);
-}
+};
 
 function render(tasks) {
   let uncompletedList = document.querySelector(".uncompleted-tasks ul");
@@ -94,3 +99,10 @@ function render(tasks) {
 }
 
 render(tasks);
+
+document.querySelector("#add-task").addEventListener("click", event => {
+  event.preventDefault();
+  let input = document.querySelector("#new-task");
+  addTask(input.value);
+  input.value = "";
+});
