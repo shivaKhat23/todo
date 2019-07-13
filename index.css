@@ -37,10 +37,32 @@ body {
   box-sizing: border-box;
   text-transform: capitalize;
 }
-.completed-tasks {
+
+.completed-tasks{
   text-transform: capitalize;
 }
 
-.completed-item{
+.item{
+  display: flex;
+  justify-content: space-between;
+}
+
+.completed-item span{
   text-decoration: line-through;
+}
+
+.fa-circle{
+  font-size: 0.6em;
+}
+
+.actions .fa{
+  cursor: pointer;
+}
+
+.actions .fa:hover{
+  font-size: 1.1em;
+}
+
+ul{
+  padding-inline-start: 0px;
 }

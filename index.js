@@ -28,9 +28,31 @@ function render(element, tasks, completedCheck) {
   element.innerHTML = tasks
     .filter(completedCheck)
     .map(task => {
-      return `<li class="${task.completed ? "completed-item" : "uncompleted-item"}">${task.name}</li>`;
+      return `<li class="${task.completed ? "item completed-item" : "item uncompleted-item"}">
+            <div>
+                <i class="fa fa-circle"></i>
+                <span>${task.name}</span>
+            </div>
+            <div class="actions">
+              ${getActions(task)}
+            </div>
+      </li>`;
     })
     .join("");
+}
+
+function getActions(task) {
+  if (!task.completed) {
+    return `
+       <i class="fa fa-check-square"></i>
+       <i class="fa fa-trash-alt"></i>
+    `;
+  } else {
+    return `
+       <i class="fa fa-undo"></i>
+       <i class="fa fa-trash-alt"></i>
+    `;
+  }
 }
 
 render(completedList, tasks, task => task.completed);
