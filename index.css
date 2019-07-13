@@ -43,3 +43,7 @@ body {
 li{
   font-size: 1.2em;
 }
+
+.completed-item{
+  text-decoration: line-through;
+}

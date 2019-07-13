@@ -28,12 +28,10 @@ function render(element, tasks, completedCheck) {
   element.innerHTML = tasks
     .filter(completedCheck)
     .map(task => {
-      return `<li>${task.name}</li>`;
+      return `<li class="${task.completed ? "completed-item" : "uncompleted-item"}">${task.name}</li>`;
     })
     .join("");
 }
 
-render(uncompletedList,tasks,task => task.completed);
-render(completedList,tasks,task => !task.completed);
-
-
+render(completedList, tasks, task => task.completed);
+render(uncompletedList, tasks, task => !task.completed);
