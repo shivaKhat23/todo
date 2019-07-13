@@ -9,21 +9,22 @@ body {
 }
 
 .todo-box {
-  width: 400px;
-  height: 500px;
+  width: 600px;
+  height: 700px;
   background-color: white;
   padding: 1em;
   display: flex;
   flex-direction: column;
   background-color: lightyellow;
+  font-size: 1.4em;
 }
 
 .title {
-  width: 27em;
+  width: 107.5%;
   box-sizing: border-box;
   text-align: center;
-  margin-top: -15px;
-  margin-left: -15px;
+  margin-top: -22px;
+  margin-left: -23px;
   background-color: lightgreen;
 }
 
@@ -38,10 +39,6 @@ body {
 }
 .completed-tasks {
   text-transform: capitalize;
-}
-
-li{
-  font-size: 1.2em;
 }
 
 .completed-item{
