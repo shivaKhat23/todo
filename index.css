@@ -32,11 +32,11 @@ body {
   text-transform: uppercase;
 }
 
-.tasks {
+.uncompleted-tasks {
   box-sizing: border-box;
   text-transform: capitalize;
 }
-.c-tasks {
+.completed-tasks {
   text-transform: capitalize;
 }
 

@@ -2,19 +2,6 @@ function createTodo(name) {
   return { name: name, completed: false };
 }
 
-const isCompleted = task => task.completed;
-const isNotCompleted = task => !task.completed;
-
-const getFilteredTasks = (tasks, test) => {
-  let result = [];
-  for (let task of tasks) {
-    if (test(task)) {
-      result.push(task);
-    }
-  }
-  return result;
-};
-
 let tasks = [
   {
     name: "Do homework",
@@ -34,20 +21,19 @@ let tasks = [
   }
 ];
 
-let uncompletedContainer = document.getElementById("todo");
-let completedContainer = document.getElementById("completed");
+let uncompletedList = document.querySelector(".uncompleted-tasks ul");
+let completedList = document.querySelector(".completed-tasks ul");
 
-let completedTasks = getFilteredTasks(tasks, isCompleted);
-let uncompletedTasks = getFilteredTasks(tasks, isNotCompleted);
+function render(element, tasks, completedCheck) {
+  element.innerHTML = tasks
+    .filter(completedCheck)
+    .map(task => {
+      return `<li>${task.name}</li>`;
+    })
+    .join("");
+}
 
-console.log(completedTasks);
-console.log(uncompletedTasks);
+render(uncompletedList,tasks,task => task.completed);
+render(completedList,tasks,task => !task.completed);
 
-uncompletedContainer.innerHTML = uncompletedTasks.map(task => {
-  return `<li>${task.name}</li>`;
-}).join("");
-
-completedContainer.innerHTML = completedTasks.map(task => {
-  return `<li>${task.name}</li>`;
-}).join("");
 
